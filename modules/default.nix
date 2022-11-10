@@ -8,4 +8,5 @@
 	./cli/git
 	./cli/nvim
 	./cli/zsh
+	./system/fonts
 ]
