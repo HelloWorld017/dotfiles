@@ -1,0 +1,162 @@
+" Basic Configuration
+set nocompatible
+filetype off
+
+" Auto Installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+	silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+	autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+" Start Plugging
+call plug#begin('~/.vim/plugged')
+	
+	" coc.nvim: LSP Integration
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	" fugitive.vim: Git Integration
+	Plug 'tpope/vim-fugitive'
+
+	" fzf.vim: Fuzzy Finder
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+
+	" nvim-tree.lua: File explorer
+	Plug 'kyazdani42/nvim-web-devicons'
+	Plug 'kyazdani42/nvim-tree.lua'
+
+	" airline.vim: Status Line
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+
+	" onehalf.vim: Onehalf Colorscheme
+	Plug 'sonph/onehalf', { 'rtp': 'vim' }
+
+	" vim-visual-multi.vim: Multiple Cursors
+	Plug 'mg979/vim-visual-multi'
+
+	" surround.vim: Handle parentheses and more surroundings
+	Plug 'tpope/vim-surround'
+
+	" editorconfig.vim: Respect projects' editor configuration
+	Plug 'editorconfig/editorconfig-vim'	
+
+call plug#end()
+
+" Editor Configuration
+colorscheme onehalfdark
+set history=1000
+set autoread
+set autowrite
+set mouse=a
+set ruler
+set hlsearch
+set incsearch
+set showmatch
+set number
+set encoding=utf8
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set smartindent
+set copyindent
+set ignorecase
+set nobackup
+set smartcase
+set display+=lastline
+set display+=uhex
+set scrolloff=3
+set laststatus=2
+set list
+set hidden
+
+" Relative Line Numbers
+set number
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
+" Key Map
+" > Save on Ctrl-S
+nnoremap<C-S> :w<cr>
+
+" > Prevent Overscroll on PgUp / PgDown
+map <silent> <PageUp> <C-U>
+map <silent> <PageDown> <C-D>
+
+" > Open Fuzzy Finder on Ctrl-P
+nnoremap <C-P> :Files<cr>
+
+" > Go to definition
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+nmap <silent> gh :call CocAction('doHover')<CR>
+
+" > Fix current
+nmap <silent> qf <Plug>(coc-fix-current)
+
+" > Tab Management
+" >> Previous / Next Tab
+nmap <leader>] :bnext<CR>
+nmap <leader>[ :bprevious<CR>
+
+" >> Close Tab
+nmap <leader>bq :bp <BAR> bd #<CR>
+
+" >> Tab to Autocomplete
+inoremap <silent><expr> <TAB>
+	\ pumvisible() ? "\<C-n>" :
+	\ <SID>check_back_space() ? "\<TAB>" :
+	\ coc#refresh()
+
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Airline Configs
+" > Tabline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_buffers = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline#extensions#tabline#buffer_nr_format = '%s:'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" Coc Configs
+" > Basic Extensions
+let g:coc_global_extensions = [ 'coc-highlight' ]
+
+" > JavaScript / TypeScript Development
+call extend(g:coc_global_extensions, [ 'coc-tsserver', 'coc-eslint' ])
+
+" > Web Development
+call extend(g:coc_global_extensions, [ 'coc-css', 'coc-html', 'coc-styled-components' ])
+
+" > Structured Data
+call extend(g:coc_global_extensions, [ 'coc-json', 'coc-yaml' ])
+
+" Other Configs
+lua << EOF
+	require'nvim-tree'.setup {
+		disable_netrw = true,
+		hijack_netrw = true,
+
+		actions = {
+			open_file = {
+				resize_window = true,
+			}
+		},
+
+		view = {
+			number = true,
+			relativenumber = true
+		}
+	}
+EOF
