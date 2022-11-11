@@ -6,5 +6,7 @@
 			enable = true;
 			extraConfig = (builtins.readFile ./init.nvim);
 		};
+
+		env.EDITOR = "nvim";
 	};
 }

@@ -12,6 +12,7 @@
 		'';
 
 		nix.configureBuildUsers = true;
+		nixpkgs.config.allowUnfree = true;
 		services.nix-daemon.enable = true;
 	};
 }

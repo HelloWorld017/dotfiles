@@ -3,16 +3,12 @@
 {
 	config = {
 		home.packages = with pkgs; [
-			awscli
-			bat
-			btop
-			exa
-			fzf
-			jq
-			nodejs
-			ripgrep
-			thefuck
-			yarn
+			slack
+		];
+
+		homebrew.casks = [
+			"asana"
+			"notion"
 		];
 	};
 }

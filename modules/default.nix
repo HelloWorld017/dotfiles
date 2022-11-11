@@ -1,5 +1,7 @@
 [
-#	./apps/kitty
+	./apps/apps.nix
+	./apps/kitty
+	./apps/work.nix
 	./base/cask.nix
 	./base/env.nix
 	./base/home.nix

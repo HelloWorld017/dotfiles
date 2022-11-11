@@ -16,6 +16,8 @@ with lib; {
 	};
 
 	config = {
+		env.PATH = ["$PATH"];
+
 		# Writing Environments
 		environment.extraInit = concatStringsSep "\n"
 			(mapAttrsToList (n: v: ''export ${n}="${v}"'') config.env);
