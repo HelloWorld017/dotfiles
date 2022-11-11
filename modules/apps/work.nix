@@ -2,13 +2,11 @@
 
 {
 	config = {
-		home.packages = with pkgs; [
-			slack
-		];
-
 		homebrew.casks = [
 			"asana"
 			"notion"
+			"slack"
+			"tailscale"
 		];
 	};
 }

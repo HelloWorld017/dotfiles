@@ -1,5 +1,6 @@
 [
 	./apps/apps.nix
+	./apps/karabiner
 	./apps/kitty
 	./apps/work.nix
 	./base/cask.nix
@@ -9,6 +10,8 @@
 	./cli/cli.nix
 	./cli/git
 	./cli/nvim
+	./cli/tmux
 	./cli/zsh
 	./system/fonts
+	./system/system.nix
 ]

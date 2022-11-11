@@ -1,6 +1,6 @@
 { pkgs, lib, config, options, ... }:
 let
-	user = "yohan";
+	user = "nenw";
 in with lib; {
 	options = with types; {
 		home = {

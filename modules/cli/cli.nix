@@ -7,6 +7,7 @@
 			bat
 			btop
 			exa
+			fd
 			fzf
 			jq
 			nodejs

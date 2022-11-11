@@ -40,7 +40,20 @@ call plug#begin('~/.vim/plugged')
 	Plug 'tpope/vim-surround'
 
 	" editorconfig.vim: Respect projects' editor configuration
-	Plug 'editorconfig/editorconfig-vim'	
+	Plug 'editorconfig/editorconfig-vim'
+
+	" peekaboo.vim: Show register contents
+	" > Max height issue: junegunn/vim-peekaboo#74
+	" Plug 'junegunn/vim-peekaboo'
+	
+	" leap.nvim: Easy leap between chars
+	Plug 'ggandor/leap.nvim'
+	Plug 'ggandor/flit.nvim'
+
+	" typescript.vim: Typescript Syntax Highlighting
+	" > Some syntax is not correctly highlighted by CocHighlight
+	Plug 'leafgarland/typescript-vim'
+	Plug 'peitalin/vim-jsx-typescript'
 
 call plug#end()
 
@@ -91,6 +104,12 @@ map <silent> <PageDown> <C-D>
 " > Open Fuzzy Finder on Ctrl-P
 nnoremap <C-P> :Files<cr>
 
+" > Leap
+map <silent> r <Plug>(leap-forward)
+map <silent> R <Plug>(leap-backward)
+map <silent> t <Plug>(leap-forward-x)
+map <silent> T <Plug>(leap-backward-x)
+
 " > Go to definition
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -111,14 +130,17 @@ nmap <leader>bq :bp <BAR> bd #<CR>
 
 " >> Tab to Autocomplete
 inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
 
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" > Git Grep on :Ggr
+command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 " Airline Configs
 " > Tabline
@@ -159,4 +181,15 @@ lua << EOF
 			relativenumber = true
 		}
 	}
+
+	require'leap'.setup {
+		-- Do not use "s" for label
+		safe_labels = {
+			'f', 'n', 'u', 't', '/', 'S',
+			'F', 'N', 'L', 'H', 'M', 'U', 'G', 'T', '?', 'Z'
+		}
+	}
+
+	-- require'flit'.setup()
 EOF
+

@@ -22,6 +22,8 @@
 				fxxk = "fuck";
 				vim = "nvim";
 			};
+
+			initExtra = (builtins.readFile ./init.zsh);
 		};
 	};
 }

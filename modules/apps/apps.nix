@@ -1,8 +1,10 @@
 { config, lib, pkgs, ... }:
 {
 	config = {
-		brew.casks = [
-			"sublime"
+		homebrew.casks = [
+			"dozer"
+			"sublime-text"
+			# "homebrew/cask-versions/firefox-developer-edition"
 		];
 	};
 }
