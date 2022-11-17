@@ -6,7 +6,7 @@
 			enable = true;
 			shellAliases = {
 				e = "open .";
-				gl = "if git config --get alias.l > dev/null; then git l; else git log --oneline --all --graph --decorate; fi";
+				gl = "if git config --get alias.l > /dev/null; then git l; else git log --oneline --all --graph --decorate; fi";
 				glc = "git log --oneline";
 				ls = "ls -F";
 				ll = "exa -alFh";
