@@ -3,9 +3,11 @@
 {
 	config = {
 		home.packages = with pkgs; [
+			android-tools
 			awscli
 			bat
 			btop
+			docker-compose
 			exa
 			fd
 			fzf
