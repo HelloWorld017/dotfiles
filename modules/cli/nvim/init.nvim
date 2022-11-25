@@ -30,6 +30,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 
+	" barbar.nvim: Buffer Line
+	Plug 'romgrk/barbar.nvim'
+	
 	" onehalf.vim: Onehalf Colorscheme
 	Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
@@ -45,6 +48,9 @@ call plug#begin('~/.vim/plugged')
 	" peekaboo.vim: Show register contents
 	" > Max height issue: junegunn/vim-peekaboo#74
 	" Plug 'junegunn/vim-peekaboo'
+
+	" registers.nvim: Show register contents (alternative)
+	Plug 'tversteeg/registers.nvim'
 	
 	" leap.nvim: Easy leap between chars
 	Plug 'ggandor/leap.nvim'
@@ -55,6 +61,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'leafgarland/typescript-vim'
 	Plug 'peitalin/vim-jsx-typescript'
 
+	" nix.vim: Mix Syntax Highlighting
+	Plug 'LnL7/vim-nix'
 call plug#end()
 
 " Editor Configuration
@@ -97,6 +105,9 @@ augroup END
 " > Save on Ctrl-S
 nnoremap<C-S> :w<cr>
 
+" > Open Tree
+nnoremap<C-O> <Cmd>NvimTreeToggle<CR>
+
 " > Prevent Overscroll on PgUp / PgDown
 map <silent> <PageUp> <C-U>
 map <silent> <PageDown> <C-D>
@@ -122,11 +133,17 @@ nmap <silent> qf <Plug>(coc-fix-current)
 
 " > Tab Management
 " >> Previous / Next Tab
-nmap <leader>] :bnext<CR>
-nmap <leader>[ :bprevious<CR>
+" nmap <leader>] :bnext<CR>
+" nmap <leader>[ :bprevious<CR>
+nmap <leader>] <Cmd>BufferNext<CR>
+nmap <leader>[ <Cmd>BufferPrevious<CR>
+
+" >> Pick
+nmap <leader>p <Cmd>BufferPick<CR>
 
 " >> Close Tab
-nmap <leader>bq :bp <BAR> bd #<CR>
+" nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bq <Cmd>BufferClose<CR>
 
 " >> Tab to Autocomplete
 inoremap <silent><expr> <TAB>
@@ -150,8 +167,8 @@ endfunction
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
 " Airline Configs
-" > Tabline
-let g:airline#extensions#tabline#enabled = 1
+" > Tabline (Disabled)
+let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
@@ -179,13 +196,19 @@ lua << EOF
 
 		actions = {
 			open_file = {
-				resize_window = true,
+				resize_window = true
 			}
 		},
 
 		view = {
 			number = true,
-			relativenumber = true
+			relativenumber = true,
+			float = {
+				enable = true,
+				open_win_config = {
+					width = 80
+				}
+			}
 		}
 	}
 
@@ -198,5 +221,14 @@ lua << EOF
 	}
 
 	-- require'flit'.setup()
+
+	require'registers'.setup {
+		window = {
+			border = "rounded",
+			transparency = 0
+		}
+	}
+
+	require'bufferline'.setup()
 EOF
 
