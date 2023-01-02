@@ -10,6 +10,12 @@ in with lib; {
 				description = "Files to place directly in $HOME";
 			};
 
+			configFile = mkOption {
+				type = attrs;
+				default = {};
+				description = "Config files to place in $HOME/.config";
+			};
+
 			services = mkOption {
 				type = attrs;
 				default = {};
@@ -51,6 +57,9 @@ in with lib; {
 				};
 				programs = mkAliasDefinitions options.home.programs;
 				services = mkAliasDefinitions options.home.services;
+				xdg = {
+					configFile = mkAliasDefinitions options.home.configFile;
+				};
 			};
 		};
 	};
