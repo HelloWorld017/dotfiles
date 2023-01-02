@@ -63,6 +63,10 @@ call plug#begin('~/.vim/plugged')
 
 	" nix.vim: Mix Syntax Highlighting
 	Plug 'LnL7/vim-nix'
+
+	" dashboard.lua: Show dashboard
+	Plug 'glepnir/dashboard-nvim'
+
 call plug#end()
 
 " Editor Configuration
@@ -163,6 +167,18 @@ function! CheckBackspace() abort
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+" > Clipboard Management
+" >> Copy to clipboard
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+vnoremap  <leader>y  "+y
+
+" >> Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
 " > Git Grep on :Ggr
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
 
@@ -220,8 +236,6 @@ lua << EOF
 		}
 	}
 
-	-- require'flit'.setup()
-
 	require'registers'.setup {
 		window = {
 			border = "rounded",
@@ -230,5 +244,7 @@ lua << EOF
 	}
 
 	require'bufferline'.setup()
+
+	-- require'flit'.setup()
 EOF
 
