@@ -60,6 +60,7 @@ zinit lucid light-mode for \
 
 # Fuzzy Finder
 export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers color=always {}'"
 
 # The Fuck
 eval $(thefuck --alias)
