@@ -6,5 +6,6 @@
 		system.defaults.NSGlobalDomain.KeyRepeat = 2;
 		system.defaults.trackpad.Clicking = true;
 		system.defaults.dock.autohide = true;
+		system.defaults.dock.show-recents = false;
 	};
 }
