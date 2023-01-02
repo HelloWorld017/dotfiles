@@ -5,6 +5,7 @@
 		fonts.fontDir.enable = true;
 		fonts.fonts = with pkgs; [
 			(pkgs.callPackage ./sarasa-gothic.nix {})
+			pretendard
 			pretendard-jp
 		];
 	};

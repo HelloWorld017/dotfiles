@@ -10,11 +10,19 @@
 			docker-compose
 			exa
 			fd
+			ffmpeg
 			fzf
 			jq
 			nodejs
+			pkg-config
+			php
+			python311
+			pv
 			ripgrep
+			tealdeer
 			thefuck
+			virtualenv
+			wget
 			yarn
 		];
 	};
