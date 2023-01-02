@@ -58,6 +58,9 @@ zinit lucid light-mode for \
 	as"completion" is-snippet id-as"docker-completions/docker-compose" \
 		"https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose"
 
+# > Line Editing
+zinit light jeffreytse/zsh-vi-mode
+
 # Fuzzy Finder
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers color=always {}'"
