@@ -20,7 +20,8 @@
 				unsafe-chrome = "open -n -a /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --args --user-data-dir='/tmp/chrome_dev_test' --disable-web-security";
 				fzfile = "fzf";
 				fzrepo = "fd . $(git rev-parse --show-toplevel) | fzf";
-				fzbranch = "git --no-pager branch --all | fzf --no-preview";
+				fzbranch = "git show-ref --heads | cut -d/ -f3- | fzf --no-preview";
+				fzremotes = "git show-ref | grep refs/remotes | cut -d/ -f3- | fzf --no-preview";
 				fzproc = "ps ax -o pid,command | fzf --no-preview | cut -d' ' -f1";
 				fxxk = "fuck";
 				vim = "nvim";

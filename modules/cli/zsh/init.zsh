@@ -65,5 +65,10 @@ zinit light jeffreytse/zsh-vi-mode
 export FZF_DEFAULT_COMMAND='fd --type f'
 export FZF_DEFAULT_OPTS="--preview 'bat --style=numbers color=always {}'"
 
+# Fuzzy Git
+export GF_SNAPSHOT_DIRECTORY="$HOME/.git-fuzzy-snapshots"
+zinit ice as"program" pick"bin/git-fuzzy"
+zinit light bigH/git-fuzzy
+
 # The Fuck
 eval $(thefuck --alias)
