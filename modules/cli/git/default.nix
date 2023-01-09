@@ -22,7 +22,6 @@
 		home.packages = with pkgs; [
 			git-lfs
 			rs-git-fsmonitor
-			watchman
 			delta
 		];
 	};
