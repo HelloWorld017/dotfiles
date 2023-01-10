@@ -8,6 +8,11 @@
 			extraConfig = ''
 				# Enable full colors
 				set -g default-terminal 'screen-256color'
+
+				# Open panes in same directory
+				bind c new-window -c "#{pane_current_path}"
+				bind '"' split-window -c "#{pane_current_path}"
+				bind % split-window -h -c "#{pane_current_path}"
 			'';
 
 			plugins = with pkgs.tmuxPlugins; [
