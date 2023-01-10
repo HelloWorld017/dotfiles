@@ -67,6 +67,8 @@ call plug#begin('~/.vim/plugged')
 	" dashboard.lua: Show dashboard
 	Plug 'glepnir/dashboard-nvim'
 
+	" ctrlxa.vim: Superpowers ctrl-X, ctrl-A
+	Plug 'Konfekt/vim-CtrlXA'
 call plug#end()
 
 " Editor Configuration
@@ -181,6 +183,16 @@ vnoremap <leader>P "+P
 
 " > Git Grep on :Ggr
 command -nargs=+ Ggr execute 'silent Ggrep!' <q-args> | cw | redraw!
+
+" > :Indent
+function! s:IndentConfiguration(size, style)
+	exec "set tabstop=" . a:size
+	exec "set softtabstop=" . a:size
+	exec "set shiftwidth=" . a:size
+    exec "set " . (a:style == "space" ? "" : "no") . "expandtab"
+endfunction
+
+command -nargs=+ Indent call s:IndentConfiguration(<f-args>)
 
 " Airline Configs
 " > Tabline (Disabled)
