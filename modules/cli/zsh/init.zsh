@@ -38,6 +38,9 @@ AGKOZAK_CUSTOM_RPROMPT+=' %*'
 zinit light agkozak/agkozak-zsh-prompt
 
 # Plugins
+# > Line Editing
+zinit light jeffreytse/zsh-vi-mode
+
 # > Autocompletion, Suggestions, Syntax Highlight
 zinit wait lucid light-mode for \
 	atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
@@ -57,9 +60,6 @@ zinit lucid light-mode for \
 		"https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker" \
 	as"completion" is-snippet id-as"docker-completions/docker-compose" \
 		"https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose"
-
-# > Line Editing
-zinit light jeffreytse/zsh-vi-mode
 
 # Fuzzy Finder
 export FZF_DEFAULT_COMMAND='fd --type f'
