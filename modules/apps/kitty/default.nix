@@ -39,5 +39,12 @@
 			color14 #52adf2
 			color15 #abb2bf
 		'';
+
+		home.programs.zsh = {
+			enable = true;
+			shellAliases = {
+				icat = "kitty +kitten icat";
+			};
+		};
 	};
 }

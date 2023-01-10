@@ -12,6 +12,7 @@
 			fd
 			ffmpeg
 			fzf
+			imagemagick
 			jq
 			nodejs
 			pkg-config
