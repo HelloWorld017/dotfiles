@@ -11,17 +11,17 @@
 					ll = "exa -alFh";
 					cls = "clear";
 					fxxk = "fuck";
-				} ++
+				} //
 				{
 					# Git Related Aliases
 					gl = "if git config --get alias.l > /dev/null; then git l; else git log --oneline --all --graph --decorate; fi";
 					glc = "git log --oneline";
-				} ++ 
+				} //
 				{
 					# Editor Related Aliases
 					vim = "nvim";
 					kill-tsserver = "ps -ax | grep nvim | grep node | grep tsserver |  awk '{print $1}' | xargs kill -9";
-				} ++
+				} //
 				{
 					# Fuzzy Finder Commands
 					fzfile = "fzf";
@@ -34,7 +34,7 @@
 					fzb = "fzbranch";
 					fzba = "fzbranchall";
 					fzp = "fzproc";
-				} ++
+				} //
 				{
 					# Docker Aliases
 					dpsa = "docker ps -a";
@@ -43,7 +43,7 @@
 					dclf = "docker-compose logs -f";
 					dclft = "docker-compose logs -f --tail=100";
 					dcdown = "docker-compose down";
-				} ++
+				} //
 				{
 					# Desktop Environment Related Aliases
 					"e." = "open .";
