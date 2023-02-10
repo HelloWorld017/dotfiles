@@ -48,7 +48,6 @@
 				{
 					# Desktop Environment Related Aliases
 					"e." = "open .";
-					unsafe-chrome = "open -n -a /Applications/Google\\ Chrome.app/Contents/MacOS/Google\\ Chrome --args --user-data-dir='/tmp/chrome_dev_test' --disable-web-security";
 				};
 
 			initExtra = (builtins.readFile ./init.zsh);
