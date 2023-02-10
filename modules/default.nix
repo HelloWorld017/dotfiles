@@ -11,6 +11,7 @@
 	./cli/git
 	./cli/nvim
 	./cli/tmux
+	./cli/work.nix
 	./cli/zsh
 	./system/fonts
 	./system/system.nix

@@ -41,7 +41,6 @@
 		'';
 
 		home.programs.zsh = {
-			enable = true;
 			shellAliases = {
 				icat = "kitty +kitten icat";
 			};
