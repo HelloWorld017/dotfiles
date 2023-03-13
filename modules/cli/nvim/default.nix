@@ -59,6 +59,12 @@ in {
 			};
 		};
 
+		home.file = {
+			".eslintrc" = {
+				text = "{}";
+			};
+		};
+
 		env.EDITOR = "nvim";
 	};
 }
