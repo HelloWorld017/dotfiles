@@ -7,6 +7,7 @@
 			awscli
 			bat
 			btop
+			darwin.iproute2mac
 			docker-compose
 			exa
 			fd
@@ -15,6 +16,8 @@
 			imagemagick
 			jq
 			nodejs
+			nodePackages.pnpm
+			nodePackages.yarn
 			pkg-config
 			php
 			python311
@@ -22,9 +25,9 @@
 			ripgrep
 			tealdeer
 			thefuck
+			turbo
 			virtualenv
 			wget
-			yarn
 		];
 	};
 }
