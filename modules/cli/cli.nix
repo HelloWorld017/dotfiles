@@ -25,7 +25,6 @@
 			ripgrep
 			tealdeer
 			thefuck
-			turbo
 			virtualenv
 			wget
 		];
