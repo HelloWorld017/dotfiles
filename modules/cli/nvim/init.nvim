@@ -65,7 +65,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'LnL7/vim-nix'
 
 	" dashboard.lua: Show dashboard
-	Plug 'glepnir/dashboard-nvim'
+	Plug 'nvimdev/dashboard-nvim'
 
 	" ctrlxa.vim: Superpowers ctrl-X, ctrl-A
 	Plug 'Konfekt/vim-CtrlXA'
@@ -250,8 +250,30 @@ lua << EOF
 
 	require'registers'.setup {
 		window = {
-			border = "rounded",
+			border = 'rounded',
 			transparency = 0
+		}
+	}
+
+	require'dashboard'.setup {
+		theme = 'hyper',
+		config = {
+			packages = { enable = false },
+			project = { enable = false },
+			shortcut = {
+				{ desc = 'Finder', icon = ' ', key = 'p', action = 'GFiles' },
+				{ desc = 'Tree', icon = ' ', key = 'o', action = 'NvimTreeToggle' }
+			},
+			footer = {
+				'',
+				'ネヌ* エディタ r23'
+			}
+		},
+		preview = {
+			command = 'cat',
+			file_path = vim.fn.stdpath('config') .. '/header.txt',
+			file_width = 80,
+			file_height = 12
 		}
 	}
 
