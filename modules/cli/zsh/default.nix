@@ -44,6 +44,7 @@
 					dclf = "docker-compose logs -f";
 					dclft = "docker-compose logs -f --tail=100";
 					dcdown = "docker-compose down";
+					kc = "kubectl";
 				} //
 				{
 					# Desktop Environment Related Aliases
