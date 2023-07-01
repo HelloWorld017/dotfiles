@@ -3,6 +3,7 @@
 {
 	home.packages = with pkgs; [
 		_1password
+		kind
 	];
 
 	home.programs.zsh = {
