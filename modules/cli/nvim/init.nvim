@@ -237,6 +237,10 @@ lua << EOF
 					width = 80
 				}
 			}
+		},
+
+		update_focused_file = {
+			enable = true
 		}
 	}
 
