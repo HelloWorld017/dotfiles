@@ -219,6 +219,7 @@ call extend(g:coc_global_extensions, [ 'coc-json', 'coc-yaml' ])
 " Other Configs
 lua << EOF
 	require'nvim-tree'.setup {
+		sort_by = 'case_sensitive',
 		disable_netrw = true,
 		hijack_netrw = true,
 
