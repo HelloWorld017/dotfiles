@@ -217,6 +217,9 @@ call extend(g:coc_global_extensions, [ 'coc-css', 'coc-html', 'coc-styled-compon
 " > Structured Data
 call extend(g:coc_global_extensions, [ 'coc-json', 'coc-yaml' ])
 
+" > Others
+call extend(g:coc_global_extensions, [ 'coc-elixir' ])
+
 " Other Configs
 lua << EOF
 	require'nvim-tree'.setup {

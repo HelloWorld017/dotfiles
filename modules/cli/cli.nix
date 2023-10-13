@@ -11,6 +11,7 @@
 			chafa
 			darwin.iproute2mac
 			docker-compose
+			elixir
 			exa
 			fd
 			ffmpeg
