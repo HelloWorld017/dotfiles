@@ -15,10 +15,13 @@
 				bind % split-window -h -c "#{pane_current_path}"
 
 				# Vim-like Keybindings
-				bind-key h select-pane -L
-				bind-key j select-pane -D
-				bind-key k select-pane -U
-				bind-key l select-pane -R
+				bind h select-pane -L
+				bind j select-pane -D
+				bind k select-pane -U
+				bind l select-pane -R
+
+				# Automatically re-number windows
+				set -g renumber-windows on
 			'';
 
 			plugins = with pkgs.tmuxPlugins; [
