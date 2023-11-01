@@ -2,6 +2,7 @@
 	./apps/apps.nix
 	./apps/karabiner
 	./apps/kitty
+	./apps/tabby
 	./apps/work.nix
 	./base/cask.nix
 	./base/env.nix
