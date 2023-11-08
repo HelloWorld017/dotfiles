@@ -97,6 +97,7 @@ set scrolloff=3
 set laststatus=2
 set list
 set hidden
+set signcolumn=yes
 
 " Relative Line Numbers
 set number
