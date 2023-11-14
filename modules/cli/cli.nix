@@ -29,6 +29,7 @@
 			pv
 			ripgrep
 			spicetify-cli
+			tailspin
 			tealdeer
 			thefuck
 			virtualenv
