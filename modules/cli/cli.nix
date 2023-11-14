@@ -28,6 +28,7 @@
 			python311
 			pv
 			ripgrep
+			rustup
 			spicetify-cli
 			tailspin
 			tealdeer
