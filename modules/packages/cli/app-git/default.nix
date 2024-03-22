@@ -16,13 +16,11 @@
 				pull.ff = "only";
 				push.autoSetupRemote = "true";
 				rerere.enabled = "true";
-				# core.fsmonitor = "rs-git-fsmonitor";
 			};
 		};
 
 		home.packages = with pkgs; [
 			git-lfs
-			rs-git-fsmonitor
 			delta
 		];
 	};

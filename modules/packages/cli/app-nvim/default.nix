@@ -59,12 +59,12 @@ in {
 		home.packages = with pkgs; [ nil ];
 		home.programs.neovim = {
 			enable = true;
-			extraConfig = builtins.readFile ./init.nvim;
+			extraConfig = builtins.readFile ./assets/init.nvim;
 		};
 
 		home.configFile = {
 			"nvim/header.txt" = {
-				source = ./header.txt;
+				source = ./assets/header.txt;
 			};
 
 			"nvim/coc-settings.json" = let

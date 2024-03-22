@@ -1,0 +1,4 @@
+[
+	../app-karabiner
+	./packages.nix
+]

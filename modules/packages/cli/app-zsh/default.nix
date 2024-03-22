@@ -51,7 +51,7 @@
 					"e." = "open .";
 				};
 
-			initExtra = (builtins.readFile ./init.zsh);
+			initExtra = (builtins.readFile ./assets/init.zsh);
 		};
 	};
 }
