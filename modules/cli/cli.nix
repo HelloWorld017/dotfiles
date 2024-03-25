@@ -12,7 +12,8 @@
 			darwin.iproute2mac
 			docker-compose
 			elixir
-			exa
+			eza
+			fastmod
 			fd
 			ffmpeg
 			fzf
