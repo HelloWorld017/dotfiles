@@ -33,9 +33,6 @@ call plug#begin('~/.vim/plugged')
 	" barbar.nvim: Buffer Line
 	Plug 'romgrk/barbar.nvim'
 	
-	" onehalf.vim: Onehalf Colorscheme
-	Plug 'sonph/onehalf', { 'rtp': 'vim' }
-
 	" vim-visual-multi.vim: Multiple Cursors
 	Plug 'mg979/vim-visual-multi'
 
@@ -56,23 +53,28 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ggandor/leap.nvim'
 	Plug 'ggandor/flit.nvim'
 
-	" typescript.vim: Typescript Syntax Highlighting
-	" > Some syntax is not correctly highlighted by CocHighlight
-	Plug 'leafgarland/typescript-vim'
-	Plug 'peitalin/vim-jsx-typescript'
-
-	" nix.vim: Mix Syntax Highlighting
+	" nix.vim: Nix Syntax Highlighting
 	Plug 'LnL7/vim-nix'
 
 	" dashboard.lua: Show dashboard
-	Plug 'nvimdev/dashboard-nvim'
+	Plug 'glepnir/dashboard-nvim'
 
 	" ctrlxa.vim: Superpowers ctrl-X, ctrl-A
 	Plug 'Konfekt/vim-CtrlXA'
+
+	" nvim-notify: Changes notification UI
+	Plug 'rcarriga/nvim-notify'
+
+	" nvim-treesitter: Add syntax highlighting
+	Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+	" Colorschemes
+	Plug 'sonph/onehalf', { 'rtp': 'vim' }
+	Plug 'nyoom-engineering/oxocarbon.nvim'
+	Plug 'bluz71/vim-moonfly-colors', { 'as': 'moonfly' }
 call plug#end()
 
 " Editor Configuration
-colorscheme onehalfdark
 set history=1000
 set autoread
 set autowrite
@@ -98,6 +100,16 @@ set laststatus=2
 set list
 set hidden
 set signcolumn=yes
+
+" Colorschemes
+" colorscheme onehalfdark
+colorscheme moonfly
+
+" Enable GUI Colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+set background=dark
 
 " Relative Line Numbers
 set number
@@ -137,6 +149,7 @@ nmap <silent> gh :call CocAction('doHover')<CR>
 
 " > Fix current
 nmap <silent> qf <Plug>(coc-fix-current)
+nmap <silent> qq <Plug>(coc-codeaction-cursor)
 
 " > Tab Management
 " >> Previous / Next Tab
@@ -146,11 +159,18 @@ nmap <leader>] <Cmd>BufferNext<CR>
 nmap <leader>[ <Cmd>BufferPrevious<CR>
 
 " >> Pick
-nmap <leader>p <Cmd>BufferPick<CR>
+nmap <leader>= <Cmd>BufferPick<CR>
 
 " >> Close Tab
 " nmap <leader>bq :bp <BAR> bd #<CR>
 nmap <leader>bq <Cmd>BufferClose<CR>
+
+" > Autocomplete
+" >> Ctrl-G to Autocomplete
+inoremap <silent><expr> <C-G>
+	\ coc#pum#visible()
+		\ ? coc#pum#stop()
+		\ : coc#refresh()
 
 " >> Tab to Autocomplete
 inoremap <silent><expr> <TAB>
@@ -190,7 +210,7 @@ function! s:IndentConfiguration(size, style)
 	exec "set tabstop=" . a:size
 	exec "set softtabstop=" . a:size
 	exec "set shiftwidth=" . a:size
-    exec "set " . (a:style == "space" ? "" : "no") . "expandtab"
+	exec "set " . (a:style == "space" ? "" : "no") . "expandtab"
 endfunction
 
 command -nargs=+ Indent call s:IndentConfiguration(<f-args>)
@@ -222,10 +242,14 @@ call extend(g:coc_global_extensions, [ 'coc-elixir' ])
 
 " Other Configs
 lua << EOF
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "None" })
+	vim.api.nvim_set_hl(0, "FloatBorder", { bg = "None" })
+
 	require'nvim-tree'.setup {
 		sort_by = 'case_sensitive',
 		disable_netrw = true,
 		hijack_netrw = true,
+		sync_root_with_cwd = true,
 
 		actions = {
 			open_file = {
@@ -239,7 +263,11 @@ lua << EOF
 			float = {
 				enable = true,
 				open_win_config = {
-					width = 80
+					border = 'rounded',
+					relative = 'editor',
+					width = 80,
+					row = 1,
+					col = 2
 				}
 			}
 		},
@@ -287,6 +315,50 @@ lua << EOF
 	}
 
 	require'bufferline'.setup()
+
+	require'nvim-treesitter.configs'.setup {
+		auto_install = true,
+		ensure_installed = {
+			'bash',
+			'css',
+			'diff',
+			'elixir',
+			'dockerfile',
+			'git_rebase',
+			'gitignore',
+			'glsl',
+			'go',
+			'graphql',
+			'java',
+			'javascript',
+			'json',
+			'lua',
+			'markdown',
+			'nix',
+			'python',
+			'rust',
+			'scala',
+			'styled',
+			'svelte',
+			'typescript',
+			'tsx',
+			'vim',
+			'vue',
+			'xml',
+			'yaml'
+		},
+		highlight = {
+			enable = true,
+			additional_vim_regex_highlighting = false
+		}
+	}
+
+	require'notify'.setup {
+		max_width = 80,
+		render = 'wrapped-compact'
+	}
+
+	vim.notify = require'notify'
 
 	-- require'flit'.setup()
 EOF
