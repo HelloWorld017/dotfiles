@@ -42,6 +42,17 @@ let
 				"rootPatterns" = ["flake.nix"];
 			};
 		};
+		"workspace" = {
+			"rootPatterns" = [
+				".git"
+				".hg"
+				".projections.json"
+				"tsconfig.json"
+			];
+		};
+		"tsserver" = {
+			"useLocalTsdk" = true;
+		};
 	};
 in {
 	config = {
