@@ -8,6 +8,7 @@
 			extraConfig = ''
 				# Enable full colors
 				set -g default-terminal 'screen-256color'
+				set -ga terminal-overrides ',*256col*:Tc'
 
 				# Open panes in same directory
 				bind c new-window -c "#{pane_current_path}"
