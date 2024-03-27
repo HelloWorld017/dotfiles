@@ -12,10 +12,6 @@
 		home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
 	};
 
-	outputs = { self, darwin, home-manager, ... }: {
-		darwinConfigurations."nenw-iceflake" = darwin.lib.darwinSystem {
-			system = "aarch64-darwin";
-			modules = [home-manager.darwinModules.home-manager] ++ import ./modules;
-		};
-	};
+	outputs = { ... }@inputs:
+		(import ./modules/devices) inputs;
 }

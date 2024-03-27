@@ -1,6 +1,6 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
 {
-	config = {
+	config = lib.mkIf pkgs.stdenv.isDarwin {
 		system.defaults.NSGlobalDomain.AppleShowAllFiles = true;
 		system.defaults.NSGlobalDomain.InitialKeyRepeat = 25;
 		system.defaults.NSGlobalDomain.KeyRepeat = 2;

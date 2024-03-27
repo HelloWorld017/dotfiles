@@ -12,7 +12,7 @@
 				"homebrew/cask-versions/firefox-developer-edition"
 			];
 		})
-		(lib.mkIf !pkgs.stdenv.isDarwin {
+		(lib.mkIf (!pkgs.stdenv.isDarwin) {
 			home.packages = with pkgs; [
 				blender
 				figma-linux

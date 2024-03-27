@@ -2,7 +2,7 @@
 
 {
 	config = lib.mkMerge [
-		(lib.mkIf !pkgs.stdenv.isDarwin {
+		(lib.mkIf (!pkgs.stdenv.isDarwin) {
 			# On darwin, the docker is installed in the docker-desktop
 			home.packages = with pkgs; [ docker ];
 		})
