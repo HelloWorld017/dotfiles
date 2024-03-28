@@ -40,7 +40,7 @@ in with lib; {
 		programs.zsh.enable = true;
 		users.users.${user} = {
 			name = user;
-			home = "/Users/${user}";
+			home = if pkgs.stdenv.isDarwin then "/Users/${user}" else "/home/${user}";
 			shell = pkgs.zsh;
 		};
 

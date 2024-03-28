@@ -1,2 +1,3 @@
 { ... }@inputs: 
-	((import ./iceflake) inputs)
+	((import ./iceflake) inputs) ++
+	((import ./seasalt) inputs)
