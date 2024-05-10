@@ -202,22 +202,7 @@ nnoremap <leader>P "+P
 vnoremap <leader>p "+p
 vnoremap <leader>P "+P
 
-" >> No writing to register unless explicitly yanked
-nnoremap d "_d
-vnoremap d "_d
-nnoremap D "_D
-vnoremap D "_D
-
-nnoremap c "_c
-vnoremap c "_c
-nnoremap C "_C
-vnoremap C "_C
-
-nnoremap s "_s
-vnoremap s "_s
-nnoremap S "_S
-vnoremap S "_S
-
+" >> No writing to register while paste
 xnoremap p P
 
 " > Git Grep on :Ggr
