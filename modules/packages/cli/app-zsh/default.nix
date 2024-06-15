@@ -35,6 +35,11 @@
 					fzb = "fzbranch";
 					fzba = "fzbranchall";
 					fzp = "fzproc";
+					fzpkg = "fd 'package.json' $(realpath --relative-to=. $(git rev-parse --show-toplevel)) -x dirname | fzf";
+				} //
+				{
+					# cd Aliases
+					cdp = "cd $(fzpkg)";
 				} //
 				{
 					# Docker Aliases
