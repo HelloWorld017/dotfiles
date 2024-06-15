@@ -4,6 +4,7 @@
 	config = {
 		home.packages = with pkgs; [
 			bat
+			coreutils
 			eza
 			fd
 			fzf
