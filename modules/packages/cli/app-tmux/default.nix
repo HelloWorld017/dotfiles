@@ -21,6 +21,11 @@
 				bind k select-pane -U
 				bind l select-pane -R
 
+				# Break / Join
+				bind ! break-pane
+				bind @ choose-window 'join-pane -h -t "%%"'
+				bind C-@ choose-window 'join-pane -t "%%"'
+
 				# Automatically re-number windows
 				set -g renumber-windows on
 			'';
