@@ -238,10 +238,10 @@ call extend(g:coc_global_extensions, [ 'coc-tsserver', 'coc-eslint' ])
 call extend(g:coc_global_extensions, [ 'coc-css', 'coc-html', 'coc-styled-components' ])
 
 " > Structured Data
-call extend(g:coc_global_extensions, [ 'coc-json', 'coc-yaml' ])
+call extend(g:coc_global_extensions, [ 'coc-json', 'coc-protobuf', 'coc-yaml' ])
 
 " > Others
-call extend(g:coc_global_extensions, [ 'coc-elixir' ])
+call extend(g:coc_global_extensions, [ 'coc-elixir', 'coc-python', 'coc-rust-analyzer' ])
 
 " Other Configs
 lua << EOF

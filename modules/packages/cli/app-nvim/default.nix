@@ -36,10 +36,22 @@ let
 			"default" = " (default)";
 		};
 		"languageserver" = {
+			"graphql" = {
+				"command" = "graphql-lsp";
+				"args" = ["server" "-m" "stream"];
+				"filetypes" = ["graphql"];
+			};
 			"nix" = {
 				"command" = "nil";
 				"filetypes" = ["nix"];
 				"rootPatterns" = ["flake.nix"];
+			};
+			"biome" = {
+				"command" = "biome";
+				"args" = ["lsp-proxy"];
+				"filetypes" = ["javascript" "typescript" "javascriptreact" "typescriptreact"];
+				"rootPatterns" = ["biome.json"];
+				"requireRootPattern" = true;
 			};
 		};
 		"workspace" = {
@@ -53,10 +65,18 @@ let
 		"tsserver" = {
 			"useLocalTsdk" = true;
 		};
+		"graphql" = {
+			"filetypes" = ["graphql"];
+		};
 	};
 in {
 	config = {
-		home.packages = with pkgs; [ nil ];
+		# TODO Make it configurable
+		home.packages = with pkgs; [
+			biome
+			nil
+			nodePackages.graphql-language-service-cli
+		];
 		home.programs.neovim = {
 			enable = true;
 			extraConfig = builtins.readFile ./assets/init.nvim;
