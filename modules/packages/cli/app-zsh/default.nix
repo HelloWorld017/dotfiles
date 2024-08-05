@@ -8,7 +8,7 @@
 				{
 					# Base Aliases
 					ls = "ls -F";
-					ll = "eza -alFh";
+					ll = "eza -alh -F always";
 					cls = "clear";
 					fxxk = "fuck";
 				} //
