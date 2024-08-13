@@ -2,39 +2,74 @@
 
 let
 	cocSettings = {
-		"eslint" = {
-			"autoFixOnSave" = true;
+		# Generic
+		"coc.preferences" = {
+			"formatOnSaveFiletypes" = [
+				"javascript"
+				"javascript.tsx"
+				"javascriptreact"
+				"typescript"
+				"typescript.tsx"
+				"typescriptreact"
+			];
 		};
-		"suggest.noselect" = true;
-		"suggest.enablePreselect" = false;
-		"suggest.completionItemKindLabels" = {
-			"text" = "  (text)";
-			"method" = " (method)";
-			"function" = " (function)";
-			"constructor" = " (constructor)";
-			"field" = " (field)";
-			"variable" = " (variable)";
-			"class" = " (class)";
-			"interface" = " (interface)";
-			"module" = " (module)";
-			"property" = " (property)";
-			"unit" = " (unit)";
-			"value" = " (value)";
-			"enum" = " (enum)";
-			"enumMember" = " (enum member)";
-			"keyword" = " (keyword)";
-			"snippet" = " (snippet)";
-			"color" = " (color)";
-			"file" = " (file)";
-			"reference" = " (reference)";
-			"folder" = " (folder)";
-			"constant" = " (constant)";
-			"struct" = " (struct)";
-			"event" = " (event)";
-			"operator" = " (operator)";
-			"typeParameter" = " (type parameter)";
-			"default" = " (default)";
+
+		"workspace" = {
+			"rootPatterns" = [
+				".git"
+				".hg"
+				".projections.json"
+				"tsconfig.json"
+			];
 		};
+
+		# UI / Suggest
+		"suggest" = {
+			"noselect" = true;
+			"enablePreselect" = false;
+			"completionItemKindLabels" = {
+				"text" = "  (text)";
+				"method" = " (method)";
+				"function" = " (function)";
+				"constructor" = " (constructor)";
+				"field" = " (field)";
+				"variable" = " (variable)";
+				"class" = " (class)";
+				"interface" = " (interface)";
+				"module" = " (module)";
+				"property" = " (property)";
+				"unit" = " (unit)";
+				"value" = " (value)";
+				"enum" = " (enum)";
+				"enumMember" = " (enum member)";
+				"keyword" = " (keyword)";
+				"snippet" = " (snippet)";
+				"color" = " (color)";
+				"file" = " (file)";
+				"reference" = " (reference)";
+				"folder" = " (folder)";
+				"constant" = " (constant)";
+				"struct" = " (struct)";
+				"event" = " (event)";
+				"operator" = " (operator)";
+				"typeParameter" = " (type parameter)";
+				"default" = " (default)";
+			};
+			"floatConfig" = {
+				"border" = true;
+				"rounded" = true;
+			};
+		};
+
+		# UI / Hover
+		"hover" = {
+			"floatConfig" = {
+				"border" = true;
+				"rounded" = true;
+			};
+		};
+
+		# LSP
 		"languageserver" = {
 			"graphql" = {
 				"command" = "graphql-lsp";
@@ -49,29 +84,48 @@ let
 			"biome" = {
 				"command" = "biome";
 				"args" = ["lsp-proxy"];
-				"filetypes" = ["javascript" "typescript" "javascriptreact" "typescriptreact"];
+				"filetypes" = [
+					"javascript"
+					"javascript.tsx"
+					"javascriptreact"
+					"typescript"
+					"typescript.tsx"
+					"typescriptreact"
+				];
 				"rootPatterns" = ["biome.json"];
 				"requireRootPattern" = true;
+
+				# Higher priority than eslint / prettier, if it has biome.json
+				"formatterPriority" = 2;
 			};
 		};
-		"workspace" = {
-			"rootPatterns" = [
-				".git"
-				".hg"
-				".projections.json"
-				"tsconfig.json"
-			];
-		};
+
+		# Language-Specific
 		"tsserver" = {
 			"useLocalTsdk" = true;
 		};
+
+		"typescript" = {
+			"format.enable" = false;
+		};
+
+		"javascript" = {
+			"format.enable" = false;
+		};
+
 		"graphql" = {
 			"filetypes" = ["graphql"];
+		};
+
+		"eslint" = {
+			# the eslint's formatter takes lower priority than the tsserver's
+			# "format.enable" = true;
+			"autoFixOnSave" = true;
 		};
 	};
 in {
 	config = {
-		# TODO Make it configurable
+		# TODO Make it additional languages configurable
 		home.packages = with pkgs; [
 			biome
 			nil
