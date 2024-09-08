@@ -232,7 +232,7 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:coc_global_extensions = [ 'coc-highlight' ]
 
 " > JavaScript / TypeScript Development
-call extend(g:coc_global_extensions, [ 'coc-tsserver', 'coc-eslint' ])
+call extend(g:coc_global_extensions, [ 'coc-tsserver', 'coc-eslint', 'coc-biome' ])
 
 " > Web Development
 call extend(g:coc_global_extensions, [ 'coc-css', 'coc-html', 'coc-styled-components' ])

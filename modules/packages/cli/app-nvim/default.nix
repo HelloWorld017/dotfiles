@@ -81,23 +81,6 @@ let
 				"filetypes" = ["nix"];
 				"rootPatterns" = ["flake.nix"];
 			};
-			"biome" = {
-				"command" = "biome";
-				"args" = ["lsp-proxy"];
-				"filetypes" = [
-					"javascript"
-					"javascript.tsx"
-					"javascriptreact"
-					"typescript"
-					"typescript.tsx"
-					"typescriptreact"
-				];
-				"rootPatterns" = ["biome.json"];
-				"requireRootPattern" = true;
-
-				# Higher priority than eslint / prettier, if it has biome.json
-				"formatterPriority" = 2;
-			};
 		};
 
 		# Language-Specific
@@ -106,11 +89,15 @@ let
 		};
 
 		"typescript" = {
-			"format.enable" = false;
+			"format" = {
+				"enable" = false;
+			};
 		};
 
 		"javascript" = {
-			"format.enable" = false;
+			"format" = {
+				"enable" = false;
+			};
 		};
 
 		"graphql" = {
@@ -118,8 +105,9 @@ let
 		};
 
 		"eslint" = {
+			"format.enable" = true;
+
 			# the eslint's formatter takes lower priority than the tsserver's
-			# "format.enable" = true;
 			"autoFixOnSave" = true;
 		};
 	};
