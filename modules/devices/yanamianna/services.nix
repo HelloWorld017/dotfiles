@@ -3,7 +3,6 @@
   imports = [
     repo.server
     ./services/auth.nix
-    ./services/cuttingedge.nix
     ./services/blog.nix
     ./services/gluetun.nix
     ./services/images.nix
