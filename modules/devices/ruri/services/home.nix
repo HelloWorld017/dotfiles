@@ -4,7 +4,12 @@
   ports = config.pkgs.server.ports.ports;
 
   pagesHost = "pages.nenw.dev";
-  pagesRoutes = [ "bits" "irodori" "tone-marble" ];
+  pagesRoutes = [
+    "bits"
+    "irodori"
+    "qrescan"
+    "tone-marble"
+  ];
   pagesProxy = {
     proxyPass = "https://${pagesHost}";
     recommendedProxySettings = false;
